@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+th:fragment="Layout(content)"  >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Fashion Hub</title>
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- Linking CSS Files -->
+    <link rel="stylesheet" th:href="@{/css/basestyle.css}"> <!-- Base styles -->
+   
+</head>
+<body>
+    <!-- Header content -->
+     <header>
+    <nav class="headerc">
+        <!-- Logo Image -->
+       <a href="#" class="logo"> 
+<img th:src="@{/img/fashionhublogo.png}" class="logo-img" alt="Fashion Hub Logo">
+       </a>
+        <!-- Navigation Menu -->
+        <ul class="navmenu">
+            <li><a href="/">Home</a></li>
+            <li><a href="/product">Products</a></li>
+            <li><a href="/about">About Us</a></li>
+            
+            
+    <th:block th:if="${user != null}">
+    <!-- Check if user role is ROLE_ADMIN -->
+        <th:block th:if="${user.role == 'ROLE_ADMIN'}">
+            <li><a href="/admin/">Admin</a></li>
+        </th:block>
+         
+    <li><a href="/logout">Logout</a></li>
+    </th:block>
+
+    <!-- Show these options when the user is not logged in -->
+    <th:block th:if="${user == null}">
+        <li><a href="/signin">Login</a></li>
+        <li><a href="/register">Sign Up</a></li>
+    </th:block>
+
+        </ul>
+
+        <!-- Navigation Icons -->
+        <div class="nav-icon">
+            <a href="/user/cart"><img src="/img/cart.png" alt="Cart"></a>
+            <a href="#"><img src="/img/user1.png" alt="User"></a>
+
+            <a href="#"><img src="/img/menu.png" id="menu-icon" alt="Menu"></a>
+        </div>
+    </nav>
+</header>
+    <!-- Main layout container -->
+    <main>
+        <!-- Content Injection Section -->
+        <div th:replace="${content}">
+            <!-- Content from other templates will be injected here -->
+        </div>
+    </main>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
+

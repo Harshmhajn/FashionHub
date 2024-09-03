@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/product.css}">
+    <title></title>
+</head>
+<body>
+    
+    <div th:replace="~{base :: Layout(~{::section})}">
+        
+        <section class="trending-product" id="trending">
+            
+            <form action="" class="search-bar">
+                <input type="search" name="search" pattern=".*\S.*" required>
+                <button class="search-btn" type="submit">
+                    <span>Search</span>
+                </button>
+            </form>
+            <div class="center-text">
+                <h2>Our Trending <span> Products</span></h2>
+            </div>
+
+            <div class="products">
+                <div class="row" th:each="p:${products}">
+                    <img th:src="@{'/img/product_img/' + ${p.imageName} + '?v=1'}"class="productimg">
+                    <div class="product-text">
+                        <h5>[[${p.title}]]</h5>
+                    </div>
+
+                    <div class="price">
+                        <p><b>[[${p.price}]]</b>  [[${p.discount}]]% off</p>
+                    </div>
+                    
+                    <div class="btn-detail"><a th:href="@{'/view_product/'+${p.id}}">
+                      <h5> View Details</h5>
+                    </a>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

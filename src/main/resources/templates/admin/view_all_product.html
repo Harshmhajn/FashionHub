@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" th:href="@{/css/view_all_product.css}">
+</head>
+<body>
+    <div th:replace="~{base :: Layout(~{::section})}">
+        <section>
+            <div class="container">
+                <div class="cards-container">
+                    <div class="card view-product-card">
+                        <h2>View Product</h2>
+                        <th:block th:if="${session.SuccMsg}" class="succMsg">
+                            <p >[[${session.SuccMsg}]]</p>
+                            <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+                        </th:block>
+
+                        <th:block th:if="${session.ErrorMsg}" class="errMsg">
+                            <p >[[${session.ErrorMsg}]]</p>
+                        </th:block>
+
+                        <div class="card product-details-card">
+                            <h2>Product Details</h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>S1 No</th>
+                                        <th>Title</th>
+                                        <th>Image</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th>Status</th>
+                                        <th>Stock</th>
+                                        <th>Discount</th>
+                                        <th>DiscountPrice</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="p,c:${products}">
+                                        <th scope="row">[[${c.count}]]</th>
+                                        <td>[[${p.title}]]</td>
+                                        <td><img th:src="@{'/img/product_img/' + ${p.imageName}}+ '?v=' + ${#dates.format(date, 'yyyyMMddHHmmss')}"
+                                            alt="Product Image" class="product-image"></td>
+                                        <td>[[${p.category}]]</td>
+                                        <td>[[${p.price}]]</td>
+                                        <td>[[${p.isActive}]]</td>
+                                        <td>[[${p.stock}]]</td>
+                                        <td>[[${p.discount}]]</td>
+                                        <td>[[${p.discountPrice}]]</td>
+                                        <td class="actions">
+                                            <a th:href="@{'/admin/loadEditProduct/' + ${p.id}}"><button class="btn btn-edit">Edit</button></a>
+                                            <a th:href="@{'/admin/deleteProduct/'+${p.id}}"><button class="btn btn-delete">Delete</button></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

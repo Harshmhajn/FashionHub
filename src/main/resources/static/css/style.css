@@ -1,0 +1,11 @@
+* {
+    font-family: "Jost", sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+}
+body{
+    padding-top: 110px;
+}
+

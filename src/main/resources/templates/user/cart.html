@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/product.css}">
+    <title> Cart </title>
+</head>
+<body>
+    <div th:replace="~{base :: Layout(~{::section})}">
+        <section class="about-section">
+            <div class="products">
+                <div class="row" th:each="p:${product}">
+                    <img th:src="@{'/img/product_img/' + ${p.imageName} + '?v=1'}"class="productimg">
+                    <div class="product-text">
+                        <h5>[[${p.title}]]</h5>
+                    </div>
+
+                    <div class="price">
+                        <p><b>[[${p.price}]]</b>  [[${p.discount}]]% off</p>
+                    </div>
+                    
+                    <div class="btn-detail"><a>
+                      <h5> Buy Now </h5>
+                    </a>
+                    </div>
+                </div>
+                
+        </section>
+    </div>
+</body>
+</html>

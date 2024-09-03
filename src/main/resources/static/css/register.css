@@ -1,0 +1,114 @@
+/* Global styles */
+* {
+    font-family: "Jost", sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow:auto; /* Prevent scrolling */
+}
+
+/* Register Section */
+.register-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fff; /* White background */
+}
+
+/* Register Container */
+.register-container {
+    width: calc(100% - 400px); /* 200px margin on each side */
+    margin-top: 450px; /* Center the container */
+    background-color: #2c2c2c;
+    width: 90%; /* Replace with the above line */
+max-width: 600px; /* Remove or adjust as needed */
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%; /* Responsive width */
+    max-width: 600px; /* Maximum width for larger screens */
+    color: #fff;
+}
+
+.register-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #fff;
+}
+
+/* Grid Layout for Form */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 1rem; /* Space between fields */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-container label {
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.register-container input {
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #111;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.file-upload input {
+    padding: 0.5rem;
+    background-color: #111;
+}
+
+.register-container button {
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #111;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 210px;
+}
+
+.register-container button:hover {
+    background-color: #EE1c47;
+    color: #fff;
+}
+
+/* Login Link */
+.login-link {
+    text-align: center;
+    margin-top: 1rem;
+    color: #fff;
+}
+
+.login-link a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.login-link a:hover {
+    color: #EE1c47;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+}

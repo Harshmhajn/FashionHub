@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Project</title>
+    <link rel="stylesheet" th:href="@{/css/addprod.css}"> <!-- Base styles -->
+    
+</head>
+<body>
+    <div th:replace="~{base :: Layout(~{::section})}">
+        <section>
+            <div class="container">
+                <h1>Add Product</h1>
+                <th:block th:if="${session.SuccMsg}" class="msg">
+                    <p class="succMsg">
+                      [[${session.succMsg}]]  
+                    </p>
+                <th:block th:text = "${@commonServiceImpl.removeSessionMessage()}"></th:block>
+                </th:block>
+
+                <th:block th:if="${session.ErrorMsg}">
+                    <p class="errMsg">
+                      [[${session.ErrorMsg}]]  
+                    </p>
+                </th:block>
+              
+                <form action="/admin/saveProduct" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="title">Enter Title</label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Enter Description</label>
+                        <textarea id="description" name="description" rows="4" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="category">Enter Category</label>
+                        <select id="category" name="category" required>
+                            <option value="">--select--</option>
+                            <option th:each="c : ${categories}" th:value="${c.name}" th:text="${c.name}"></option>
+                        </select>
+                        </div>
+                    <div class="form-group">
+                        <label for="price">Enter Price</label>
+                        <input type="number" id="price" name="price" required>
+                    </div>
+                    <div class="radio-group">
+                        <p>Status :</p>
+                        <label>
+                            <input type="radio" name="isActive" checked value="true" required>
+                            Active
+                        </label>
+                        <label>
+                            <input type="radio" name="isActive" value="false">
+                            Inactive
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="stock">Select Stock</label>
+                        <input type="number" id="stock" name="stock" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Upload Image</label>
+                        <input type="file" id="imageName" name="file" accept="image/*" required>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

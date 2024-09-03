@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/basestyle.css}"> <!-- Base styles -->
+    <link rel="stylesheet" th:href="@{/css/adminindex.css}">
+</head>
+<body>
+    <div th:replace="~{base :: Layout(~{::section})}">
+    <section>
+        <div class="container">
+            <div class="dashboard">
+                <!-- Dashboard Item: Add Product -->
+                <div class="card">
+                    <a href="/admin/loadAddProduct">
+                    <div class="card-content">
+                        <h2>Add Product</h2>
+                        <img src="/img/add.svg" alt="Add Product">
+                    </div>
+                </a>
+                </div>
+                <!-- Dashboard Item: Add Category -->
+                <div class="card">
+                    <a href="category">
+                    <div class="card-content">
+                        <h2>Add Category</h2>
+                        <img src="/img/viewprod.svg" alt="Add Category">
+                    </div>
+                </a>
+                </div>
+                <!-- Dashboard Item: View Product -->
+                <div class="card">
+                    <a href="/admin/viewProduct">
+                    <div class="card-content">
+                        <h2>View Product</h2>
+                        <img src="/img/category.svg" alt="View Product">
+                    </div>
+                </a>
+                </div>
+                <!-- Dashboard Item: Orders -->
+                <div class="card">
+                    <div class="card-content">
+                        <h2>Orders</h2>
+                        <img src="/img/order.svg" alt="Orders">
+                    </div>
+                </div>
+                <!-- Dashboard Item: Users -->
+                <div class="card">
+                    <a href="/admin/users">
+                    <div class="card-content">
+                        <h2>Users</h2>
+                        <img src="/img/users.svg" alt="Users">
+                    </div>
+                </a>
+                </div>
+                <!-- Dashboard Item: Add Admin -->
+                <div class="card">
+                    <a href="/admin/addAdmin">
+                    <div class="card-content">
+                        <h2>Add Admin</h2>
+                        <img src="/img/user1.png" alt="Add Admin">
+                    </div>
+                </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Category Page</title>
+    <link rel="stylesheet" th:href="@{/css/edit_category.css}">
+</head>
+<body>
+    <div th:replace="~{base :: Layout(~{::section})}">
+        <section>
+            <div class="container">
+                <div class="cards-container">
+                    <div class="card add-category-card">
+                        <h2>Edit Category</h2>
+                        <th:block th:if="${session.SuccMsg}" class="msg">
+                            <p class="succMsg">
+                              [[${session.succMsg}]]  
+                            </p>
+                        <th:block th:text = "${@commonServiceImpl.removeSessionMessage()}"></th:block>
+                        </th:block>
+
+                        <th:block th:if="${session.ErrorMsg}">
+                            <p class="errMsg">
+                              [[${session.ErrorMsg}]]  
+                            </p>
+                        </th:block>
+                        <form action="/admin/updateCategory" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="id" th:value="${category.id}">
+                            <div class="form-group">
+                                <label for="category-title">Edit Category</label>
+                                <input type="text" id="category-title" name="name"  th:value="${category.name}">
+                            </div>
+                            <div class="form-group">
+                                <label>Status</label>
+                                <div class="radio-group">
+                                    <label>
+                                        <input type="radio" name="isActive" th:value="true" th:checked="${category.isActive}" >
+                                        Active
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="isActive" th:value="false" th:checked="${!category.isActive}">
+                                        Inactive
+                                    </label>
+                                </div>
+                                
+                            <div class="form-group">
+                                <label for="category-image">Upload Image</label>
+                                <input type="file" id="category-image" name="file" accept="image/*" >
+                            </div>
+                            <img th:src="@{'/img/category_img/'+${category.imageName}} + '?v=' + ${#dates.format(date, 'yyyyMMddHHmmss')}" width="100px" height="100px" alt="">
+                            <button type="submit" class="btn">Update</button>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

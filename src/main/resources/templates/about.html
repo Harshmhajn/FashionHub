@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/about.css}">
+    <title>About Us</title>
+</head>
+<body>
+    <div th:replace="~{base :: Layout(~{::section})}">
+        <section class="about-section">
+            <div class="about-container">
+                <h1>About Us</h1>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="/img/fashionhublogo.png" alt="About Us">
+                    </div>
+                    <div class="about-text">
+                        <h2>Welcome to Fashion Hub</h2>
+                        <p>
+                            At Fashion Hub, we believe in offering the latest and greatest in fashion and style. Our mission is to provide high-quality clothing and accessories that help our customers express their unique personalities and keep up with the latest trends.
+                        </p>
+                        <p>
+                            We are committed to delivering exceptional customer service and a seamless shopping experience. Whether you're looking for a new outfit for a special occasion or everyday wear, we have something for everyone.
+                        </p>
+                        <p>
+                            Our team is passionate about fashion and constantly on the lookout for the latest trends and styles. We work closely with designers and manufacturers to ensure that our products meet the highest standards of quality and craftsmanship.
+                        </p>
+                        <p>
+                            Thank you for choosing Fashion Hub. We look forward to serving you and helping you look and feel your best.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

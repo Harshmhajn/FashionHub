@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+    <title>Register</title>
+</head> 
+<body>
+    <div th:replace="~{base :: Layout(~{::section})}">
+        <center>
+        <section class="register-section">
+            
+            <div class="register-container">
+                <h2>Register</h2>
+                <th:block th:if="${session.SuccMsg}" class="msg">
+                    <p class="succMsg">
+                      [[${session.succMsg}]]  
+                    </p>
+                <th:block th:text = "${@commonServiceImpl.removeSessionMessage()}"></th:block>
+                </th:block>
+
+                <th:block th:if="${session.ErrorMsg}">
+                    <p class="errMsg">
+                      [[${session.ErrorMsg}]]  
+                    </p>
+                </th:block>
+               
+                <form action="/saveUser" enctype="multipart/form-data" method="post">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobile">Mobile Number</label>
+                            <input type="number" id="mobile" name="mobileNumber" placeholder="Enter your mobile number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" name="address" placeholder="Enter your address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" placeholder="Enter your city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <input type="text" id="state" name="state" placeholder="Enter your state" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pincode">Pincode</label>
+                            <input type="text" id="pincode" name="pincode" placeholder="Enter your pincode" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="profile-image">Profile Image</label>
+                            <input type="file" id="profile-image" name="img" accept="image/*">
+                        </div>
+                    </div>
+                    <button type="submit">Register</button>
+                </form>
+                <p class="login-link">Already have an account? <a href="/signin">Login</a></p>
+            </div>
+        </section>
+        
+    </center>
+    </div>
+</body>
+</html>

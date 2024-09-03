@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Project</title>
+    <link rel="stylesheet" th:href="@{/css/addprod.css}"> <!-- Base styles -->
+</head>
+<body>
+    <div th:replace="~{base :: Layout(~{::section})}">
+        <section>
+            <div class="container">
+                <h1>Add Product</h1>
+                
+                <th:block th:if="${session.SuccMsg}" class="msg">
+                    <p class="succMsg" th:text="${session.SuccMsg}"></p>
+                    <th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
+                </th:block>
+
+                <th:block th:if="${session.ErrorMsg}">
+                    <p class="errMsg" th:text="${session.ErrorMsg}"></p>
+                </th:block>
+
+                <form action="/admin/updateProduct" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id" th:value="${product.id}">
+                              
+                    <div class="form-group">
+                        <label for="title">Edit Title</label>
+                        <input type="text" id="title" name="title" th:value="${product.title}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Edit Description</label>
+                        <textarea id="description" name="description" rows="4" th:text="${product.description}" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Edit Category</label>
+                        <select id="category" name="category" required>
+                            <option value="">--select--</option>
+                            <option th:each="c : ${categories}" th:value="${c.name}" th:text="${c.name}"></option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Edit Price</label>
+                        <input type="number" id="price" name="price" th:value="${product.price}" required>
+                    </div>
+                    <div class="radio-group">
+                        <p>Status :</p>
+                        <label>
+                            <input type="radio" name="isActive" checked value="true" required>
+                            Active
+                        </label>
+                        <label>
+                            <input type="radio" name="isActive" value="false">
+                            Inactive
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="stock">Edit Stock</label>
+                        <input type="number" id="stock" name="stock" th:value="${product.stock}" required>
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label for="discount">Edit Discount</label>
+                        <input type="number" id="discount" name="discount" th:value="${product.discount}" required>
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label for="discountPrice">Edit DiscountPrice</label>
+                        <input type="number" id="discountPrice" name="discountPrice" th:value="${product.discountPrice}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-image">Upload Image</label>
+                        <input type="file" id="product-image" name="file" accept="image/*">
+                    </div>
+
+                    <img th:src="@{'/img/product_img/' + ${product.imageName} + '?v=1'}" width="100px" height="100px" alt="">
+                    <button type="submit" class="btn">Update</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2c2c2c;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+
+.container {
+    max-width: 400px; /* Reduce container width */
+    margin: 150px auto 0 auto; /* Center horizontally with margin for fixed navbar */
+    padding: 15px; /* Reduce padding */
+    background-color: #111;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 15px; /* Reduce margin */
+    color: #fff;
+    font-size: 24px; /* Adjust font size */
+}
+
+.form-group {
+    margin-bottom: 12px; /* Reduce space between form elements */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 4px; /* Reduce space below labels */
+    color: #fff;
+    font-size: 14px; /* Adjust font size */
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 8px; /* Reduce padding */
+    border: 1px solid #2c2c2c;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #111;
+    font-size: 14px; /* Adjust font size */
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+.form-group input[type="file"] {
+    padding: 4px; /* Adjust padding for file input */
+}
+
+.form-group button.btn {
+    width: 100%;
+    padding: 8px; /* Reduce button padding */
+    border: none;
+    border-radius: 4px;
+    background-color: #2c2c2c;
+    color: #fff;
+    font-size: 14px; /* Adjust font size */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-group button.btn:hover {
+    background-color: #444;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .container {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    .form-group label,
+    .form-group input,
+    .form-group textarea,
+    .form-group button.btn {
+        font-size: 12px; /* Adjust font size for smaller screens */
+    }
+}

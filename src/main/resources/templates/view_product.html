@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="Layout(content)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/view_product.css}">
+    <title>Product View</title>
+</head>
+<body>
+    <div th:replace="~{base :: Layout(~{::section})}">
+        <section class="product-view">
+            <div class="product-card" >
+                <div class="product-image">
+                    <img th:src="@{'/img/product_img/' + ${product.imageName} + '?v=1'}"class="productimg" alt="Product Image">
+                </div>
+                <div class="product-details">
+                    <h2>[[${product.title}]]</h2>
+                    <p><strong>Description : </strong>[[${product.description}]]</p>
+                   <p><strong>Status :<span></strong><th:block th:if="${product.stock > 0}"> Available</th:block> <th:block th:unless="${product.stock} > 0"> Out Of Stock</th:block></span></p>
+                   <p><strong>Category : <span> </strong>[[${product.category}]] </span></p>
+                   <p><strong>Policy : <span></strong> 7 Days Replcement & Return</span></p>
+                    <p><strong>Price:</strong> [[${product.price}]] <span class="discount">[[${product.discount}]]% off</span></p>
+                    <div class="btn-detail">
+                        <a href="#"><th:block th:if="${product.stock > 0}" ><h5> Add To Cart </h5>
+                        </th:block> <th:block th:unless="${product.stock} > 0"  > Out Of Stock</th:block></h5></a>
+                    </div>
+                </div>
+            
+            </div>
+        </section>
+    </div>
+</body>
+</html>
