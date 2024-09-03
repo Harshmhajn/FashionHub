@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +32,7 @@ public class UserServiceImpl implements UserService {
         return saveUser;
     }
     @Override
+    @Cacheable(value = "userCache", key = "#email")
     public UserDtls getUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
@@ -41,6 +44,7 @@ public class UserServiceImpl implements UserService {
     public UserDtls getUserById(int id) {
         return userRepository.findById(id).get();
     }
+    @Async
     @Override
     public void increaseFailedAttempt(UserDtls user) {
        int attemp =user.getFailedAttempt()+1;

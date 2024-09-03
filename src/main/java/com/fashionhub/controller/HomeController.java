@@ -152,7 +152,6 @@ public class HomeController {
 		UserDtls user = userService.getUserByToken(token);
 		System.out.print(user == null);
 		if (ObjectUtils.isEmpty(user)) {
-			
 			session.setAttribute("msg", "Your Link is Invalid Or Expired!!");
 			return "error";
 		}

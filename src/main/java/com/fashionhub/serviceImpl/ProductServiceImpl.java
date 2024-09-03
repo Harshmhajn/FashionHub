@@ -3,6 +3,7 @@ package com.fashionhub.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.fashionhub.model.Product;
@@ -37,6 +38,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Cacheable(value = "productCache", key = "#id")
     public Product getProductById(int id) {
       Product p =  productRepository.findById(id).orElse(null);
       return p;

@@ -36,7 +36,7 @@ public class CustomUser implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return user.getAccountNonLocked();
     }
 
     @Override
