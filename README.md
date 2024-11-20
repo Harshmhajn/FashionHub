@@ -1,7 +1,4 @@
-﻿# FashionHub
-Yes, you can copy the README directly. Since you mentioned that you don't have a license for your project, you can simply remove the "License" section from the README. Here's the revised version without the License section:
 
----
 
 # FashionHub - Clothing E-commerce Website
 
